@@ -20,7 +20,7 @@ def count_common_words(json_file: str):
     def find_words(text):
         return re.findall(r'\b\w{5,}\b', text)
 
-    #Counting all words across all petitions
+    #Counting all words with 5+ letters across all petitions
     all_words = []  #List to hold all words from all petitions
     for petition in petitions:
         abstract = petition.get('abstract', {}).get('_value', '')
