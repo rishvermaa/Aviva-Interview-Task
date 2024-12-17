@@ -32,7 +32,7 @@ def count_common_words(json_file: str):
     #Counting and finding the most common 20 words
     repitive_words = [word for word, _ in Counter(all_words).most_common(20)]
 
-    #Counting words for each petition and assigning unique ID
+    #Counting words for each petition and assigning them an unique ID
     data = []
     for petition in petitions:
         uid = str(uuid.uuid4())[:8]
