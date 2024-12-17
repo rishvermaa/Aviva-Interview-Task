@@ -39,7 +39,7 @@ def count_common_words(json_file: str):
         abstract = petition.get('abstract', {}).get('_value', '')
         label = petition.get('label', {}).get('_value', '')
         combined_text = (f"{abstract} | {label}".lower())
-        # Count occurrences of each common word in the petition text
+        #Counting occurrences of each common word in the combined text
         word_count = {word: len(re.findall(r'\b' + re.escape(word) + r'\b', combined_text)) for word in repitive_words}
         word_count['petition_uid'] = uid
         data.append(word_count)
