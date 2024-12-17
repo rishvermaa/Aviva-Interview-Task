@@ -5,7 +5,7 @@ import re
 import uuid
 from collections import Counter
 from datetime import datetime
-
+from termcolor import cprint
 
 def count_common_words(json_file: str):
     #Loading the file with exception handling
@@ -13,7 +13,7 @@ def count_common_words(json_file: str):
         with open(json_file, 'r') as file:
             petitions = json.load(file)
     except (FileNotFoundError, json.JSONDecodeError) as e:
-        print(f"Error reading file: {e}")
+        cprint(f"Error reading file: {e}", 'red', attrs=['bold'])
         return
 
     #Defined a function to extract words that are 5+ letters
@@ -46,7 +46,7 @@ def count_common_words(json_file: str):
 
     #Stopping empty files to be generated
     if not data or not repitive_words:
-        print('No files generated as there is no data to process.')
+        cprint('No files generated as there is no data to process.','light_red')
         return
 
     else:        
@@ -54,4 +54,4 @@ def count_common_words(json_file: str):
         output_file = f"Output_Data_{timestamp}.csv"    
         df = pd.DataFrame(data, columns=['petition_uid'] + repitive_words)
         df.to_csv(output_file, index=False)
-        print(f"Export data created successfully: {output_file}")
+        cprint(f"Export data created successfully: {output_file}",'green')
