@@ -29,7 +29,7 @@ def count_common_words(json_file: str):
         #Extracting words and adding them to the list
         all_words.extend(find_words(combined))
 
-    #Counting and finding the most common 20 words
+    #Finding the most common 20 words
     repitive_words = [word for word, _ in Counter(all_words).most_common(20)]
 
     #Counting words for each petition and assigning them an unique ID
